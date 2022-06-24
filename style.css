@@ -1,0 +1,29 @@
+body{
+    display: grid;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --color-primary: #00bcd4;
+    --color-secondary: #5a6cd1;
+    --color-tertiary: #a6d487;
+    --color-quaternary: #e5cc95;
+}
+
+h1{
+    height: 30vh;
+}
+
+
+
+header {
+    background-color: var(--color-primary);
+}
+
+main {
+    background-color: var(--color-secondary);
+}
+
+footer {
+    background-color: var(--color-tertiary);
+}

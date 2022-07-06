@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>
+        <input type="radio" name="status" value="interesado" id="interesado"> <label for="interesado">Estoy
+            interesado</label>
+        <br>
+        <input type="radio" name="status" value="indeciso" id="indeciso"> <label for="indeciso">Estoy indeciso</label>
+        <br>
+        <input type="radio" name="status" value="no_interesado" id="no_interesado"> <label for="no_interesado">No me
+            interesa</label>
+    </p>
+    <button id="mostrar">Mostrar opción activa</button>
+    <button id="setear">Setear activo al valor "interesado"</button>
+    <p id="message"></p>
+
+
+    <form name=fcolores>
+        <input type="Radio" name="colorin" value="ffffff" checked> Blanco
+        <br>
+        <input type="Radio" name="colorin" value="ff0000"> Rojo
+        <br>
+        <input type="Radio" name="colorin" value="00ff00"> Verde
+        <br>
+        <input type="Radio" name="colorin" value="0000ff"> Azul
+        <br>
+        <input type="Radio" name="colorin" value="ffff00"> Amarillo
+        <br>
+        <input type="Radio" name="colorin" value="00ff00"> Turquesa
+        <br>
+        <input type="Radio" name="colorin" value="ff00ff"> Morado
+        <br>
+        <input type="Radio" name="colorin" value="000000"> Negro
+        <br>
+        <br>
+        <input type="Button" value="Cambia Color" onclick="cambiaColor()">
+    </form>
+
+    <table>
+        <caption>Ejemplo de tabla</caption>
+        <tbody>
+          <tr>
+            <td></td>
+            <th>A</th>
+            <th>B</th>
+          </tr>
+          <tr>
+            <th id="clickeable">1</th>
+            <td id="clickeable">A1</td>
+            <td id="clickeable">B1</td>
+          </tr>
+          <tr>
+            <th id="clickeable">2</th>
+            <td>A2</td>
+            <td>B2</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

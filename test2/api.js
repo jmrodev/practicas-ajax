@@ -131,9 +131,10 @@ const editData = id => {
         })
             .then(response => response.json())
             .then(_a => {
-                toShow();
                 actividadEdit.value = '';
                 precioEdit.value = '';
+                edit.style.display = 'none';
+                formulario.style.display = 'block';
                 getData();
             }
             )

@@ -7,9 +7,10 @@ const formulario = document.querySelector('#formulario');
 const edit = document.querySelector('#edit');
 const actividad = document.querySelector('#actividad');
 const precio = document.querySelector('#precio');
-const idData = document.querySelector('#idData');
 const btnSubmit = document.querySelector('#btn-submit');
 const list = document.querySelector('#list');
+const actividadEdit = document.querySelector('#actividadEdit');
+const precioEdit = document.querySelector('#precioEdit');
 const template = document.querySelector('#template').content;
 let fragment = document.createDocumentFragment();
 
@@ -25,9 +26,14 @@ formulario.addEventListener('submit', e => {
 );
 
 const getData = async () => {
-    const response = await fetch(url);
-    const dataObject = await response.json();
-    view(dataObject);
+    try {
+        const response = await fetch(url);
+        const dataObject = await response.json();
+        view(dataObject);
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 const view = (dataObject) => {
@@ -54,7 +60,7 @@ const btnAction = e => {
     }
 }
 
-let deleteData = async (id) => {
+const deleteData = async (id) => {
     try {
         const res = await fetch(`${url}/${id}`, {
             method: 'DELETE'
@@ -83,8 +89,9 @@ const setData = (e) => {
             }
         })
             .then(response => response.json())
-            .then(a => {
-                console.log(a);
+            .then(_a => {
+                actividad.value = '';
+                precio.value = '';
                 getData();
             }
             )
@@ -93,62 +100,48 @@ const setData = (e) => {
     }
 }
 
-function toShow() {
-    
-        
-        edit.removeAttribute('hidden');
-        formulario.addAttribute('hidden');
+function toShow(id) {
+    if (edit.style.display === 'none') {
+        edit.style.display = 'block';
+        formulario.style.display = 'none';
+        edit.addEventListener('submit', e => {
+            e.preventDefault();
+            editData(id);
+        }
+        );
+    } else {
+        edit.style.display = 'none';
+        formulario.style.display = 'block';
+    }
+}
 
-    } 
-    
-    // else {
-    //     const editData = (id) => {
-    //         fetch(`${url}/${id}`, {
-    //             method: 'PUT',
-    //             body: JSON.stringify({
-    //                 actividades: actividad.value,
-    //                 precio: precio.value
-    //             }),
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         })
-    //             .then(response => response.json())
-    //             .then(a => {
+const editData = id => {
 
-    //                 console.log(a);
-    //                 getData();
-    //             }
-    //             )
+    try {
+        const data = {
+            actividades: actividadEdit.value,
+            precio: precioEdit.value
+        }
+        fetch(`${url}/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(_a => {
+                toShow();
+                actividadEdit.value = '';
+                precioEdit.value = '';
+                getData();
+            }
+            )
 
-    //     }
-    // }
+    } catch (error) {
+        console.log(error);
+    }
 
+}
 
-// const editData = (id) => {
-//     console.log(id);
-//     e.preventDefault();
-//     try {
-//         const data = {
-//             actividades: actividad.value,
-//             precio: precio.value
-//         }
-//         fetch(`${url}/${id}`, {
-//             method: 'PUT',
-//             body: JSON.stringify(data),
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         })
-//             .then(response => response.json())
-//             .then(a => {
-//                 console.log(a);
-//                 getData();
-//             }
-//             )
-
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 

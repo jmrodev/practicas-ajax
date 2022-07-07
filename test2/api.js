@@ -62,7 +62,7 @@ const btnAction = e => {
 
 const deleteData = async (id) => {
     try {
-        const res = await fetch(`${url}/${id}`, {
+        await fetch(`${url}/${id}`, {
             method: 'DELETE'
         }).then(response => response.json())
             .then(a => {
@@ -116,7 +116,7 @@ function toShow(id) {
 }
 
 const editData = id => {
-
+console.log(id);
     try {
         const data = {
             actividades: actividadEdit.value,

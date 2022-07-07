@@ -9,11 +9,15 @@
 </head>
 
 <body>
-    <form class="formulario">
+    <form id="formulario">
         <input placeholder="actividad" type="text" id="actividad" autofocus>
         <input placeholder="precio" type="text" id="precio" autofocus>
-        <input placeholder="id" type="text" id="idData" autofocus>
         <button id="btn-submit" type="submit">Agregar</button>
+    </form>
+    <form id="edit" hidden>
+        <input placeholder="actividad" type="text" id="actividadEdit" autofocus>
+        <input placeholder="precio" type="text" id="precioEdit" autofocus>
+        <button id="btn-submit" type="submit">Editar</button>
     </form>
     
     <div id="list">
